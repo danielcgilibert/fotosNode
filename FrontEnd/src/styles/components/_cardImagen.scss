@@ -1,0 +1,58 @@
+.cardImagen {
+  background-color: red;
+  border-color: transparent;
+  border-radius: 2em;
+  height: 35rem;
+  width: 25rem;
+  box-shadow: 15px 15px 15px -3px #eeeeee09;
+  background-image: url("https://images.unsplash.com/photo-1542293787938-c9e299b880cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: 15px auto 15px auto; /* arriba,  derecha,  abajo,  izquierda */
+  padding: 15px 15px 0px 0px;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-end;
+  
+  & > h4, p {
+    color: #EEEEEE;
+    font-weight: bold;
+    font-size: large;
+    background-color: rgba(26, 25, 25, 0.698);
+    border-radius: 3px;
+    margin-top: 5px;
+    padding: 5px;
+  }
+  & > svg {
+    width: 50px;
+    height: 50px;
+    transition: all 0.6s ;
+    cursor: pointer;
+    padding-top: 5px;
+    border-bottom: none;
+
+  }
+
+  & > svg:hover {
+    width: 60px;
+    height: 60px;
+    box-shadow: 49px 15px 61px 54px rgba(0,0,0,0.1);
+    margin-top: 25px;
+    border-radius: 50px;
+    border-bottom: #00ADB5 solid 1px;
+
+  }
+
+  
+
+  @include tablet {
+    height: 29rem;
+    width: 25rem;
+  }
+
+  @include desktop {
+    height: 40rem;
+    width: 32rem;
+  }
+}

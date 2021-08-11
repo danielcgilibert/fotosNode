@@ -1,0 +1,12 @@
+@import './base/settings';
+@import './base/base';
+
+// mixins
+@import './abstracts/mixins.scss';
+
+// Pages
+@import './pages/homeScreen';
+
+// Components
+@import './components/cardImagen';
+
