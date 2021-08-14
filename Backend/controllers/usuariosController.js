@@ -1,6 +1,6 @@
 const { response } = require("express");
 const connection = require("../config/db");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const crearUsuario = async (req, res = response) => {
   const { name, email, password } = req.body;
@@ -49,25 +49,38 @@ const crearUsuario = async (req, res = response) => {
 };
 
 const loginUsuario = async(req, res = response) => {
-  const { email, password:passwordUsuario } = req.body;
+  const { email:emailUsuario, password:passwordUsuario } = req.body;
 
   try {
-    const sqlComprobacion = `SELECT email,password FROM usuarios WHERE email='${email}'`;
+    const sqlComprobacion = `SELECT * FROM usuarios WHERE email='${emailUsuario}'`;
 
     await connection.query(sqlComprobacion)
     .then(([result]) => {
       if (!result.length > 0) {
-        res.status(400).json({
+        return res.status(400).json({
           ok: false,
           msg: "El usuario no existe con ese email",
         });
-      }else{
-        const [{email, password}] = result
-        const validPassword = bcrypt.compareSync(password,passwordUsuario)
-        console.log(password);
-        console.log(validPassword);
-
       }
+        const [{id, email, password}] = result
+        const validPassword = bcrypt.compareSync(passwordUsuario, password);
+
+        if(!validPassword){
+          return res.json({
+            ok:false,
+            msg: 'contraseña icorrecta'
+          })
+        }
+
+     
+
+     res.json({
+       ok:true,
+       msg: 'loggin bien',
+       id,
+       email,
+       passwordUsuario
+     })
 
 
     });
