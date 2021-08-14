@@ -1,10 +1,13 @@
 import React from "react";
 
-export const CardImagen = () => {
+export const CardImagen = ({foto}) => {
+
+  const {id, nombre, imagen,Autor, Likes } = foto;
+  console.log(foto);
   return (
-    <div className="cardImagen">
-      <h4>Ballenas</h4>
-      <p>Cristobal Nadal</p>
+    <div className="cardImagen" id={id} style={{backgroundImage: `url(${imagen})`   }}>
+      <h4>{nombre }</h4>
+      <p>{Autor} con {Likes} likes</p>
 
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <g fill="#00ADB5">

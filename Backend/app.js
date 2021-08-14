@@ -1,45 +1,22 @@
-const express = require('express')
-require('dotenv').config();
-const mysql = require('mysql2');
+const express = require("express");
+require("dotenv").config();
+const app = express();
+const cors = require("cors");
 
+//CORS
+app.use(cors());
 
-const app = express()
- 
-
+// Lectura y parseo del body
+app.use(express.json());
 
 //Directorio Público
-app.use( express.static('public'));
+app.use(express.static("public"));
 
+// Rutas
+app.use("/api/img", require("./routes/img.routes"));
+app.use("/api/user", require("./routes/usuarios.routes"));
 
+// Escuchar peticiones
 app.listen(process.env.PORT, () => {
   console.log(`Servidor funcionando!! :: PUERTO ==> ${process.env.PORT}`);
-})
-
-
-
-// create the connection to database
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'root',
-  database: 'mydb'
 });
-
-
-connection.connect((err) => {
-	if (err) {
-		console.error('error connecting mysql: ', err);
-	} else {
-		console.log('mysql connection successful');
-		
-	}
-});
-
-
-// connection.query(
-// 	'SELECT * FROM `usuarios`',
-// 	(err, results, fields) => {
-// 	  console.log(results); // results contains rows returned by server
-// 	//   console.log(fields); // fields contains extra meta data about results, if available
-// 	}
-//   );
