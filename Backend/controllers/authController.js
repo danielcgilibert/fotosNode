@@ -1,6 +1,7 @@
 const { response } = require("express");
 const connection = require("../config/db");
 const bcrypt = require("bcryptjs");
+const { generarJWT } = require('../helpers/jwt');
 
 const crearUsuario = async (req, res = response) => {
   const { name, email, password } = req.body;
@@ -11,7 +12,6 @@ const crearUsuario = async (req, res = response) => {
 
     await connection.query(sqlComprobacion)
     .then(([result]) => {
-      console.log(result);
       if (result.length > 0) {
         res.status(400).json({
           ok: false,
@@ -25,11 +25,17 @@ const crearUsuario = async (req, res = response) => {
         const sql = `INSERT INTO usuarios (nombre, email, password) VALUES ('${name}', '${email}', '${passwordEncriptado}')`;
         connection
           .query(sql)
-          .then(([result]) => {
-            res.status(201).json({
-              ok: true,
-              msg: "registro",
-            });
+          .then((result) => {
+            const idUsuario = result[0].insertId;
+
+            generarJWT(idUsuario, name ).then( token => {
+              res.status(201).json({
+                ok: true,
+                token,
+                msg: "registro",
+              });
+            })
+            
           })
           .catch((err) => {
             console.log(sql);
@@ -62,7 +68,7 @@ const loginUsuario = async(req, res = response) => {
           msg: "El usuario no existe con ese email",
         });
       }
-        const [{id, email, password}] = result
+        const [{id, nombre, email, password}] = result
         const validPassword = bcrypt.compareSync(passwordUsuario, password);
 
         if(!validPassword){
@@ -72,15 +78,19 @@ const loginUsuario = async(req, res = response) => {
           })
         }
 
+        generarJWT(id, nombre ).then( token => {
+          res.json({
+            ok:true,
+            msg: 'loggin bien',
+            id,
+            token,
+            email
+          })
+        })
+
      
 
-     res.json({
-       ok:true,
-       msg: 'loggin bien',
-       id,
-       email,
-       passwordUsuario
-     })
+     
 
 
     });
@@ -98,10 +108,16 @@ const loginUsuario = async(req, res = response) => {
 };
 
 const renewTokeUsuario = (req, res = response) => {
-  res.json({
-    ok: true,
-    msg: "Token",
-  });
+  const id = req.id;
+  const name = req.name;
+
+  generarJWT(id, name ).then( token => {
+    res.json({
+      ok: true,
+      token
+    })
+  })
+  
 };
 
 module.exports = {

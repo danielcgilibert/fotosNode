@@ -14,7 +14,7 @@ app.use(express.static("public"));
 
 // Rutas
 app.use("/api/img", require("./routes/img.routes"));
-app.use("/api/user", require("./routes/usuarios.routes"));
+app.use("/api/auth", require("./routes/auth.routes")); //Rutas de usuarios
 
 // Escuchar peticiones
 app.listen(process.env.PORT, () => {
