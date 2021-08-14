@@ -1,20 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 export const LoginScreen = () => {
+  const [loginDatos, setLoginDatos] = useState({email: "",password: ""});
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // dispatch(startLoginEmailPassword(email, password));
+
+  };
   return (
     <div className="loginScreen">
-      <form className="formLogin">
-        <div class="user-box">
+      <form className="formLogin" onSubmit={handleSubmit}>
+        <div className="user-box">
           <label>Username</label>
-          <input type="text" name="" required="" />
+          <input type="email" name="" required onChange={(e) => setLoginDatos({...loginDatos,email: e.target.value})} />
         </div>
 
-        <div class="user-box">
+        <div className="user-box">
           <label>Password</label>
-          <input type="password" name="" required="" />
-          <button type="button">
-            Iniciar
-          </button>
+          <input type="password" name="" required onChange={(e) => setLoginDatos({...loginDatos,password: e.target.value})}/>
+          <button type="submit">Iniciar</button>
         </div>
       </form>
     </div>
