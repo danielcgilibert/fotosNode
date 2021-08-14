@@ -17,10 +17,13 @@ router.post('/new',
     check('email', 'El email es obligatorio').isEmail(),
     check('password', 'El password es obligatorio').not().isEmpty().isLength({min:6}),
     validarCampos
-]
-, crearUsuario);
+], crearUsuario);
 
-router.post('/login', loginUsuario);
+router.post('/login', [ //middlewares
+    check('email', 'El email es obligatorio').isEmail(),
+    check('password', 'El password es obligatorio').not().isEmpty().isLength({min:6}),
+    validarCampos
+], loginUsuario);
 
 router.get('/renew', renewTokeUsuario);
 
