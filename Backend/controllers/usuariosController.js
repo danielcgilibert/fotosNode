@@ -3,29 +3,39 @@ const connection = require("../config/db");
 const bcrypt = require("bcrypt");
 
 const crearUsuario = async (req, res = response) => {
-  let { name, email, password } = req.body;
+  const { name, email, password } = req.body;
 
-  // Encriptar contraseña
-  const salt = bcrypt.genSaltSync();
-  password = bcrypt.hashSync(password, salt);
+  const sqlComprobacion = `SELECT email FROM usuarios WHERE email='${email}'`;
 
-  const sql = `INSERT INTO usuarios (nombre, email, password) VALUES ('${name}', '${email}', '${password}')`
-  await connection
-    .query(
-      sql
-    )
-    .then(([result]) => {
-      res.status(201).json({
-        ...result,
-        ok: true,
-        msg: "registro",
+  await connection.query(sqlComprobacion)
+  .then(([result]) => {
+    console.log(result);
+    if (result.length > 0) {
+      res.status(400).json({
+        ok: false,
+        msg: "Un usuario ya existe con ese correo",
       });
-    })
-    .catch((err) => {
-        console.log(sql);
-      res.send(400);
-      console.log(err.message);
-    });
+    } else {
+      // Encriptar contraseña
+      const salt = bcrypt.genSaltSync();
+      const passwordEncriptado = bcrypt.hashSync(password, salt);
+
+      const sql = `INSERT INTO usuarios (nombre, email, password) VALUES ('${name}', '${email}', '${passwordEncriptado}')`;
+      connection
+        .query(sql)
+        .then(([result]) => {
+          res.status(201).json({
+            ok: true,
+            msg: "registro",
+          });
+        })
+        .catch((err) => {
+          console.log(sql);
+          res.send(400);
+          console.log(err.message);
+        });
+    }
+  });
 };
 
 const loginUsuario = (req, res = response) => {
