@@ -22,18 +22,7 @@ export const HomeScreen = () => {
 
   return (
     <div className="homeScreen gridHomeScreen">
-      {
       
-      loading ?  "cargando"
-      :
-
-      fotos.map((foto) => (
-        <CardImagen key={foto.id} foto={foto} />
-      ))
-      
-      
-      }
-
     </div>
   );
 };
