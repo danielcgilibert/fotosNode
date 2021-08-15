@@ -83,6 +83,7 @@ const loginUsuario = async(req, res = response) => {
             ok:true,
             msg: 'loggin bien',
             id,
+            nombre,
             token,
             email
           })

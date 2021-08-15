@@ -26,9 +26,7 @@
   padding: 50px 30px 50px 30px;
   transition: all 0.3s;
 
-  &:hover {
-    border: solid #00acb57e 5px;
-  }
+  
   @include tablet {
     width: 15vw;
     height: 25vh;
