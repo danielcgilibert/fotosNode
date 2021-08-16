@@ -1,0 +1,251 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Open Sans", sans-serif;
+}
+
+html,
+body {
+  color: white;
+  width: 100%;
+  height: 100%;
+  background-color: #222831;
+}
+
+.homeScreen {
+  width: 100%;
+  height: 100%;
+  background-color: #222831;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+}
+
+@media (min-width: 768px) {
+  .homeScreen {
+    background-color: unset;
+    background-color: green;
+  }
+}
+
+@media (min-width: 992px) {
+  .homeScreen {
+    background-color: red;
+  }
+}
+
+@media (min-width: 1200px) {
+  .homeScreen {
+    background-color: #222831;
+  }
+}
+
+.loginScreen {
+  font-family: "Open Sans";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #fafafa;
+  width: 100%;
+  height: 100vh;
+  background-image: url("../images/login.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.formLogin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: rgba(34, 40, 49, 0.7);
+  padding: 50px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 19px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.formLogin h1 {
+  margin-bottom: 25px;
+}
+
+.formLogin label {
+  margin-bottom: 15px;
+  padding-top: 15px;
+  width: 100%;
+  font-size: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+}
+
+.formLogin input {
+  margin: 15px;
+  padding: 2px;
+  width: 100%;
+  border-radius: 40px;
+  background-color: rgba(12, 12, 12, 0.418);
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  color: white;
+  border: none;
+  padding-left: 15px;
+  font-weight: 600;
+}
+
+.formLogin input:focus {
+  background-color: rgba(12, 12, 12, 0.418);
+  border-color: white;
+  outline: 0 none;
+  padding: 8px;
+}
+
+.formLogin button {
+  margin-top: 15px;
+  border: none;
+  width: 100%;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #00adb5;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.formLogin button:focus {
+  background-color: #f9ffff;
+  color: black;
+}
+
+@media (min-width: 768px) {
+  .formLogin {
+    padding: 150px;
+    width: 20vw;
+  }
+  .formLogin input {
+    padding: 15px;
+    width: 100%;
+    border-radius: 40px;
+    background-color: rgba(12, 12, 12, 0.418);
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    color: white;
+    padding-left: 15px;
+    font-weight: 600;
+  }
+  .formLogin input:focus {
+    padding: 20px;
+  }
+  .formLogin button {
+    width: 100%;
+    padding: 8px;
+    background-color: #00adb5;
+    color: white;
+    font-weight: bold;
+  }
+}
+
+.cardImagen {
+  background-color: red;
+  border-color: transparent;
+  border-radius: 2em;
+  height: 35rem;
+  width: 25rem;
+  -webkit-box-shadow: 15px 15px 15px -3px #eeeeee09;
+          box-shadow: 15px 15px 15px -3px #eeeeee09;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: 15px auto 15px auto;
+  /* arriba,  derecha,  abajo,  izquierda */
+  padding: 15px 15px 0px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.cardImagen > h4, .cardImagen p {
+  color: #EEEEEE;
+  font-weight: bold;
+  font-size: large;
+  background-color: rgba(26, 25, 25, 0.698);
+  border-radius: 3px;
+  margin-top: 5px;
+  padding: 5px;
+}
+
+.cardImagen > svg {
+  width: 50px;
+  height: 50px;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+  cursor: pointer;
+  padding-top: 5px;
+  border-bottom: none;
+}
+
+.cardImagen > svg:hover {
+  width: 60px;
+  height: 60px;
+  -webkit-box-shadow: 49px 15px 61px 54px rgba(0, 0, 0, 0.1);
+          box-shadow: 49px 15px 61px 54px rgba(0, 0, 0, 0.1);
+  margin-top: 25px;
+  border-radius: 50px;
+  border-bottom: #00ADB5 solid 1px;
+}
+
+@media (min-width: 768px) {
+  .cardImagen {
+    height: 29rem;
+    width: 25rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .cardImagen {
+    height: 40rem;
+    width: 32rem;
+  }
+}
+/*# sourceMappingURL=styles.css.map */

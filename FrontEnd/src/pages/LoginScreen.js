@@ -18,18 +18,20 @@ export const LoginScreen = () => {
 
         <input
           type="email"
-          name=""
           required
           autofocus
           onChange={(e) => setEmail(e.target.value)}
+          value={email}
+          name="lEmail"
           placeholder="email"
         />
 
         <input
           type="password"
-          name=""
           required
           onChange={(e) => setPassword(e.target.value)}
+          value={password}
+          name="lPassword"
           placeholder="password"
         />
         <button type="submit">Iniciar</button>

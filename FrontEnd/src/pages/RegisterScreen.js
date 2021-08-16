@@ -1,37 +1,76 @@
-import React from 'react'
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { startRegister } from "../actions/auth";
 
 export const RegisterScreen = () => {
-    return (
-        <div className="loginScreen">
-        <form className="formLogin"  autocomplete="off">
-          <h1>Register</h1>
+  const dispatch = useDispatch();
+  const [datosRegistro, setDatosRegistro] = useState({
+    name: "",
+    email: "",
+    password1: "",
+    password2: ""
+  });
+  const { name, email, password1, password2 } = datosRegistro;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(password1 !== password2){
+        console.log("Las contraseñas no son iguales");
+    }
+    dispatch(startRegister(email, password1, name));
+  };
 
-          <input
-            type="text"
-            name=""
-            required
-            autofocus
-            placeholder="nombre"
-          />
+  return (
+    <div className="loginScreen">
+      <form className="formLogin" onSubmit={handleSubmit}>
+        <h1>Register</h1>
 
-          <input
-            type="email"
-            name=""
-            required
-            autofocus
-            placeholder="email"
-          />
+        <input
+          type="text"
+          name="rName"
+          value={name}
+          required
+          autofocus
+          placeholder="Nombre"
+          onChange={(e) =>
+            setDatosRegistro({ ...datosRegistro, name: e.target.value })
+          }
+        />
 
-          
-  
-          <input
-            type="password"
-            name=""
-            required
-            placeholder="password"
-          />
-          <button type="button">Registrarte</button>
-        </form>
-      </div>
-      )
-}
+        <input
+          type="email"
+          name="rEmail"
+          value={email}
+          required
+          autofocus
+          placeholder="Escriba su email"
+          onChange={(e) =>
+            setDatosRegistro({ ...datosRegistro, email: e.target.value })
+          }
+        />
+
+        <input
+          type="password"
+          name="rPassword1"
+          value={password1}
+          required
+          placeholder="Escriba su contraseña"
+          onChange={(e) =>
+            setDatosRegistro({ ...datosRegistro, password1: e.target.value })
+          }
+        />
+
+        <input
+          type="password"
+          name="rPassword2"
+          value={password2}
+          required
+          placeholder="Repita la contraseña"
+          onChange={(e) =>
+            setDatosRegistro({ ...datosRegistro, password2: e.target.value })
+          }
+        />
+        <button type="submit">Registrarte</button>
+      </form>
+    </div>
+  );
+};
