@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,22 +8,26 @@ import {
 } from "react-router-dom";
 import { startChecking } from "../actions/auth";
 import { HomeScreen } from "../pages/HomeScreen";
-import { LoginScreen } from "../pages/LoginScreen";
-import { RegisterScreen } from "../pages/RegisterScreen";
+import { AuthRouter } from "./AuthRouter";
+import { PrivateRoute } from "./PrivateRoute";
+import { PublicRoute } from "./PublicRoute";
 
 export const AppRouter = () => {
   const dispatch = useDispatch();
-
+  const { checking, uid } = useSelector(state => state.auth)
   useEffect(() => {
     dispatch(startChecking());
   }, [dispatch])
+
+  if(checking){
+    return <h5>checking token...</h5>
+  }
   
   return (
     <Router>
       <Switch>
-        <Route path="/Login" component={LoginScreen} />
-        <Route path="/Register" component={RegisterScreen} />
-        <Route path="/" component={HomeScreen} />
+        <PublicRoute  path="/auth" component={AuthRouter} isAuthenticated={ !!uid } />
+        <PrivateRoute path="/" component={HomeScreen} isAuthenticated={ !!uid } />
         <Redirect to="/" />
       </Switch>
     </Router>

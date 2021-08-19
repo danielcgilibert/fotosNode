@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { startLoginEmailPassword } from "../actions/auth";
 
 export const LoginScreen = () => {
@@ -35,7 +36,9 @@ export const LoginScreen = () => {
           placeholder="password"
         />
         <button type="submit">Iniciar</button>
+        <Link to="/auth/login" >
         <button type="button">Registrarte</button>
+        </Link>
       </form>
     </div>
   );
