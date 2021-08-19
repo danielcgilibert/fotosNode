@@ -28,7 +28,7 @@ const crearUsuario = async (req, res = response) => {
           .then((result) => {
             const idUsuario = result[0].insertId;
 
-            generarJWT(idUsuario, name ).then( token => {
+            generarJWT(idUsuario, name, email ).then( token => {
               res.status(201).json({
                 ok: true,
                 token,
@@ -81,7 +81,7 @@ const loginUsuario = async(req, res = response) => {
           })
         }
 
-        generarJWT(id, nombre ).then( token => {
+        generarJWT(id, nombre, email ).then( token => {
           res.json({
             ok:true,
             msg: 'loggin bien',
@@ -111,13 +111,18 @@ const loginUsuario = async(req, res = response) => {
   
 };
 
-const renewTokeUsuario = (req, res = response) => {
+const renewTokenUsuario = (req, res = response) => {
+  
   const id = req.id;
   const name = req.name;
+  const email = req.email;
 
-  generarJWT(id, name ).then( token => {
+  generarJWT(id, name, email ).then( token => {
     res.json({
       ok: true,
+      uid: id,
+      name,
+      email,
       token
     })
   })
@@ -127,5 +132,5 @@ const renewTokeUsuario = (req, res = response) => {
 module.exports = {
   crearUsuario,
   loginUsuario,
-  renewTokeUsuario,
+  renewTokenUsuario,
 };

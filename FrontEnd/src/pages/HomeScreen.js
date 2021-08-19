@@ -22,7 +22,11 @@ export const HomeScreen = () => {
 
   return (
     <div className="homeScreen gridHomeScreen">
-      
+      <CardImagen />
+      <CardImagen />
+
+      <CardImagen />
+
     </div>
   );
 };
