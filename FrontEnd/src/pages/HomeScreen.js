@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { CardImagen } from "../components/cardImagen/CardImagen";
+import { NavBar } from "../components/navbar/NavBar";
 
 const getFotos = async () => {
   const url = `http://localhost:3000/api/img`;
@@ -21,12 +22,11 @@ export const HomeScreen = () => {
   }, []);
 
   return (
+    <>
+    <NavBar />
     <div className="homeScreen gridHomeScreen">
-      <CardImagen />
-      <CardImagen />
-
-      <CardImagen />
-
+      
     </div>
+    </>
   );
 };

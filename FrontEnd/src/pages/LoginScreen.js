@@ -36,7 +36,7 @@ export const LoginScreen = () => {
           placeholder="password"
         />
         <button type="submit">Iniciar</button>
-        <Link to="/auth/login" >
+        <Link to="/auth/register" >
         <button type="button">Registrarte</button>
         </Link>
       </form>

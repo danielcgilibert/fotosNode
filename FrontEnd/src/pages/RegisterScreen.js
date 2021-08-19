@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { startRegister } from "../actions/auth";
 
 export const RegisterScreen = () => {
@@ -70,6 +71,9 @@ export const RegisterScreen = () => {
           }
         />
         <button type="submit">Registrarte</button>
+      <Link to="/auth/login" >
+        <button type="button">Volver</button>
+        </Link>
       </form>
     </div>
   );
