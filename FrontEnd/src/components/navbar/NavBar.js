@@ -1,6 +1,13 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { startLogout } from "../../actions/auth";
 
 export const NavBar = () => {
+
+  const dispatch = useDispatch()
+  const handleLogout = () => {
+      dispatch(startLogout());
+  }
   return (
     <header>
       <img
@@ -21,12 +28,8 @@ export const NavBar = () => {
           </li>
         </ul>
       </nav>
-      <div class="dropdown">
-        <span>Mouse over me</span>
-        <div class="dropdown-content">
-          <p>Hello World!</p>
-        </div>
-      </div>
+
+      <button onClick={ handleLogout }> Logout </button>
     </header>
   );
 };
