@@ -8,7 +8,7 @@ export const PrivateRoute = ({
   component: Component,
   ...rest
 }) => {
-  const b = "hola"
+  const b = 2
   return (
     <Route
       {...rest}
