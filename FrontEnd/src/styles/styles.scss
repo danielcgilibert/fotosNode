@@ -1,14 +1,13 @@
-@import './base/settings';
-@import './base/base';
+@import "./base/settings";
+@import "./base/base";
 
 // mixins
-@import './abstracts/mixins.scss';
+@import "./abstracts/mixins.scss";
 
 // Pages
-@import './pages/homeScreen';
-@import './pages/loginScreen';
+@import "./pages/homeScreen";
+@import "./pages/loginScreen";
 
 // Components
-@import './components/cardImagen';
-@import './components/navBar';
-
+@import "./components/cardImagen";
+@import "./components/navBar";

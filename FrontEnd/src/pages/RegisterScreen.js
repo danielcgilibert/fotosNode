@@ -1,24 +1,24 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { startRegister } from "../actions/auth";
+import React, { useState } from "react"
+import { useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
+import { startRegister } from "../actions/auth"
 
 export const RegisterScreen = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const [datosRegistro, setDatosRegistro] = useState({
     name: "",
     email: "",
     password1: "",
-    password2: ""
-  });
-  const { name, email, password1, password2 } = datosRegistro;
+    password2: "",
+  })
+  const { name, email, password1, password2 } = datosRegistro
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if(password1 !== password2){
-        console.log("Las contraseñas no son iguales");
+    e.preventDefault()
+    if (password1 !== password2) {
+      console.log("Las contraseñas no son iguales")
     }
-    dispatch(startRegister(email, password1, name));
-  };
+    dispatch(startRegister(email, password1, name))
+  }
 
   return (
     <div className="loginScreen">
@@ -30,7 +30,7 @@ export const RegisterScreen = () => {
           name="rName"
           value={name}
           required
-          autofocus
+          autoFocus
           placeholder="Nombre"
           onChange={(e) =>
             setDatosRegistro({ ...datosRegistro, name: e.target.value })
@@ -42,7 +42,7 @@ export const RegisterScreen = () => {
           name="rEmail"
           value={email}
           required
-          autofocus
+          autoFocus
           placeholder="Escriba su email"
           onChange={(e) =>
             setDatosRegistro({ ...datosRegistro, email: e.target.value })
@@ -71,10 +71,10 @@ export const RegisterScreen = () => {
           }
         />
         <button type="submit">Registrarte</button>
-      <Link to="/auth/login" >
-        <button type="button">Volver</button>
+        <Link to="/auth/login">
+          <button type="button">Volver</button>
         </Link>
       </form>
     </div>
-  );
-};
+  )
+}

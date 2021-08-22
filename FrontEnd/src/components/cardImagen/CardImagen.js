@@ -1,11 +1,16 @@
-import React from "react";
+import React from "react"
 
 export const CardImagen = () => {
-
   // const {id, nombre, imagen,Autor, Likes } = foto;
   // console.log(foto);
   return (
-    <div className="cardImagen"  style={{backgroundImage: `url(https://pixabay.com/get/g784b65df9eeab0cd7266b6ae351db6a7cbb858fe31d43d589f783018d29f054bd3b7720b55b33d1ee88464ff7fee04d0_1920.jpg)`   }}>
+    <div
+      className="cardImagen"
+      style={{
+        backgroundImage:
+          "url(https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)",
+      }}
+    >
       <h4> Test Nombre </h4>
       <p>Autor con 55 likes</p>
 
@@ -15,10 +20,7 @@ export const CardImagen = () => {
         </g>
       </svg>
 
-      <div>
-
-      </div>
-
+      <div></div>
     </div>
-  );
-};
+  )
+}

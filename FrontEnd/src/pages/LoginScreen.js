@@ -1,26 +1,26 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { startLoginEmailPassword } from "../actions/auth";
+import React, { useState } from "react"
+import { useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
+import { startLoginEmailPassword } from "../actions/auth"
 
 export const LoginScreen = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(startLoginEmailPassword(email, password));
-  };
+    e.preventDefault()
+    dispatch(startLoginEmailPassword(email, password))
+  }
   return (
     <div className="loginScreen">
-      <form className="formLogin" onSubmit={handleSubmit} autocomplete="off">
+      <form className="formLogin" onSubmit={handleSubmit} autoComplete="off">
         <h1>Log in</h1>
 
         <input
           type="email"
           required
-          autofocus
+          autoFocus
           onChange={(e) => setEmail(e.target.value)}
           value={email}
           name="lEmail"
@@ -36,10 +36,10 @@ export const LoginScreen = () => {
           placeholder="password"
         />
         <button type="submit">Iniciar</button>
-        <Link to="/auth/register" >
-        <button type="button">Registrarte</button>
+        <Link to="/auth/register">
+          <button type="button">Registrarte</button>
         </Link>
       </form>
     </div>
-  );
-};
+  )
+}

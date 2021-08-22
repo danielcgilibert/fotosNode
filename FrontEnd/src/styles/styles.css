@@ -22,16 +22,16 @@ body {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
   -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
   -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
   -ms-flex-line-pack: stretch;
-      align-content: stretch;
+  align-content: stretch;
 }
 
 @media (min-width: 768px) {
@@ -59,15 +59,15 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   color: #fafafa;
   width: 100%;
   height: 100vh;
@@ -82,15 +82,15 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   background-color: rgba(34, 40, 49, 0.7);
   padding: 50px;
   border-radius: 10px;
@@ -186,7 +186,7 @@ body {
   height: 35rem;
   width: 25rem;
   -webkit-box-shadow: 15px 15px 15px -3px #eeeeee09;
-          box-shadow: 15px 15px 15px -3px #eeeeee09;
+  box-shadow: 15px 15px 15px -3px #eeeeee09;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -198,15 +198,16 @@ body {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-flow: column wrap;
-          flex-flow: column wrap;
+  -ms-flex-flow: column wrap;
+  flex-flow: column wrap;
   -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end;
 }
 
-.cardImagen > h4, .cardImagen p {
-  color: #EEEEEE;
+.cardImagen > h4,
+.cardImagen p {
+  color: #eeeeee;
   font-weight: bold;
   font-size: large;
   background-color: rgba(26, 25, 25, 0.698);
@@ -229,10 +230,10 @@ body {
   width: 60px;
   height: 60px;
   -webkit-box-shadow: 49px 15px 61px 54px rgba(0, 0, 0, 0.1);
-          box-shadow: 49px 15px 61px 54px rgba(0, 0, 0, 0.1);
+  box-shadow: 49px 15px 61px 54px rgba(0, 0, 0, 0.1);
   margin-top: 25px;
   border-radius: 50px;
-  border-bottom: #00ADB5 solid 1px;
+  border-bottom: #00adb5 solid 1px;
 }
 
 @media (min-width: 768px) {

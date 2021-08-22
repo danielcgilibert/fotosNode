@@ -1,8 +1,8 @@
-import React from "react";
-import { BrowserRouter as Redirect, Switch, Route } from "react-router-dom";
+import React from "react"
+import { BrowserRouter as Redirect, Switch, Route } from "react-router-dom"
 
-import { LoginScreen } from "../pages/LoginScreen";
-import { RegisterScreen } from "../pages/RegisterScreen";
+import { LoginScreen } from "../pages/LoginScreen"
+import { RegisterScreen } from "../pages/RegisterScreen"
 
 export const AuthRouter = () => {
   return (
@@ -13,5 +13,5 @@ export const AuthRouter = () => {
         <Redirect to="/auth/login" />
       </Switch>
     </div>
-  );
-};
+  )
+}

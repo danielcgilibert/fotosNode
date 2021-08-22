@@ -1,14 +1,14 @@
-import { types } from "../types/types";
-import { fetchConToken, fetchSinToken } from "../helpers/authApi";
+import { types } from "../types/types"
+import { fetchConToken, fetchSinToken } from "../helpers/authApi"
 
 export const startLoginEmailPassword = (email, password) => {
   return async (dispatch) => {
-    const resp = await fetchSinToken("auth/login", { email, password }, "POST");
-    const body = await resp.json();
+    const resp = await fetchSinToken("auth/login", { email, password }, "POST")
+    const body = await resp.json()
 
     if (body.ok) {
-      localStorage.setItem("token", body.token);
-      localStorage.setItem("token-init-date", new Date().getTime());
+      localStorage.setItem("token", body.token)
+      localStorage.setItem("token-init-date", new Date().getTime())
 
       dispatch(
         login({
@@ -16,12 +16,12 @@ export const startLoginEmailPassword = (email, password) => {
           email: body.email,
           name: body.nombre,
         })
-      );
+      )
     } else {
-      console.log("usuario no valido");
+      console.log("usuario no valido")
     }
-  };
-};
+  }
+}
 
 export const startRegister = (email, password, name) => {
   return async (dispatch) => {
@@ -29,12 +29,12 @@ export const startRegister = (email, password, name) => {
       "auth/new",
       { email, password, name },
       "POST"
-    );
-    const body = await resp.json();
+    )
+    const body = await resp.json()
 
     if (body.ok) {
-      localStorage.setItem("token", body.token);
-      localStorage.setItem("token-init-date", new Date().getTime());
+      localStorage.setItem("token", body.token)
+      localStorage.setItem("token-init-date", new Date().getTime())
 
       //! Implementar una notificación para el usuario
       dispatch(
@@ -43,23 +43,23 @@ export const startRegister = (email, password, name) => {
           email: body.email,
           name: body.name,
         })
-      );
+      )
     } else {
-      console.log("Fallo en el registro");
+      console.log("Fallo en el registro")
     }
-  };
-};
+  }
+}
 
 export const startChecking = () => {
   return async (dispatch) => {
-    const resp = await fetchConToken("auth/renew");
-    const body = await resp.json();
+    const resp = await fetchConToken("auth/renew")
+    const body = await resp.json()
 
     if (body.ok) {
-      localStorage.setItem("token", body.token);
-      localStorage.setItem("token-init-date", new Date().getTime());
+      localStorage.setItem("token", body.token)
+      localStorage.setItem("token-init-date", new Date().getTime())
 
-      console.log(body);
+      console.log(body)
       //! Implementar una notificación para el usuario
       dispatch(
         login({
@@ -67,32 +67,30 @@ export const startChecking = () => {
           email: body.email,
           name: body.name,
         })
-      );
+      )
     } else {
-      dispatch( checkingFinish() );
-
+      dispatch(checkingFinish())
     }
-  };
-};
-
-const checkingFinish = () => ({
-  type: types.authCheckingFinish
-}) 
-
-export const login = (datosUsuario) => {
-  console.log(datosUsuario);
-  return {
-    type: types.authLogin,
-    payload: datosUsuario,
-  };
-};
-
-export const startLogout = () => {
-  return (dispatch) => {
-
-    localStorage.clear();
-    dispatch(logout());
   }
 }
 
-const logout = () => ({ type: types.authLogout });
+const checkingFinish = () => ({
+  type: types.authCheckingFinish,
+})
+
+export const login = (datosUsuario) => {
+  console.log(datosUsuario)
+  return {
+    type: types.authLogin,
+    payload: datosUsuario,
+  }
+}
+
+export const startLogout = () => {
+  return (dispatch) => {
+    localStorage.clear()
+    dispatch(logout())
+  }
+}
+
+const logout = () => ({ type: types.authLogout })
